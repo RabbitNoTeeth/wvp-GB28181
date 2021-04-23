@@ -76,9 +76,7 @@ public class MessageRequestProcessor extends SIPRequestAbstractProcessor {
 	 * 处理MESSAGE请求
 	 *  
 	 * @param evt
-	 * @param layer
-	 * @param transaction  
-	 */  
+	 */
 	@Override
 	public void process(RequestEvent evt) {
 
@@ -239,7 +237,7 @@ public class MessageRequestProcessor extends SIPRequestAbstractProcessor {
 			device.setModel(XmlUtil.getText(rootElement,"Model"));
 			device.setFirmware(XmlUtil.getText(rootElement,"Firmware"));
 			storager.update(device);
-			cmder.catalogQuery(device);
+//			cmder.catalogQuery(device);
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		}

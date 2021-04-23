@@ -38,7 +38,7 @@ import com.genersoft.iot.vmp.utils.SpringBeanFactory;
 import com.genersoft.iot.vmp.utils.redis.RedisUtil;
 
 /**    
- * @Description:TODO(这里用一句话描述这个类的作用)   
+ * @Description: SIP消息处理器工厂
  * @author: swwheihei
  * @date:   2020年5月3日 下午4:24:37     
  */
@@ -88,11 +88,17 @@ public class SIPProcessorFactory {
 		
 	// 注：这里使用注解会导致循环依赖注入，暂用springBean
 	private SipProvider udpSipProvider;
-	
+
+	/**
+	 * 请求处理器
+	 * @param evt
+	 * @return
+	 */
 	public ISIPRequestProcessor createRequestProcessor(RequestEvent evt) {
 		Request request = evt.getRequest();
 		String method = request.getMethod();
 		logger.info("接收到消息："+request.getMethod());
+		// 根据请求类型的不同，动态调用不同的处理器
 		if (Request.INVITE.equals(method)) {
 			InviteRequestProcessor processor = new InviteRequestProcessor();
 			processor.setRequestEvent(evt);

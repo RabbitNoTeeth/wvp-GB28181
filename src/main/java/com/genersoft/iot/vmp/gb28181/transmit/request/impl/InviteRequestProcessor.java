@@ -14,7 +14,7 @@ public class InviteRequestProcessor extends SIPRequestAbstractProcessor {
 	/**
 	 * 处理invite请求
 	 * 
-	 * @param request
+	 * @param evt
 	 *            请求消息
 	 */ 
 	@Override
